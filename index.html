@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>coucou</title>
+
+</head>
+<body>
+
+	<p>
+   Salut les copains. C'est chouette ce truc
+</p>
+
+<p>C'est assez étonnant</p>
+
+<div id="oim"></div>
+
+<style>
+	#oim{
+		width: 200px;
+		height: 200px;
+		background: url("https://s-media-cache-ak0.pinimg.com/avatars/scornaz_1413380580_280.jpg");
+		transition-duration : 1s; 
+	  clip-path: polygon(80% 10%, 50% 100%, 10% 10%);
+	}
+	#oim:hover{
+		transform: scale(1.5) translate(-50px, 50px);
+		background-position: 200px; 
+		width: 800px;
+		height: 300px;
+	  clip-path: polygon(100% 10%, 50% 100%, 10% 10%);
+	}
+	#oim:hover::after{
+		position: relative;
+		color: white;
+		top: 50px;
+		content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil beatae ratione eligendi facilis harum enim mollitia corrupti, praesentium quisquam veniam porro inventore eum voluptate hic, nisi minima numquam, veritatis assumenda."
+	}
+</style>
+
+<svg height=0>
+<defs>
+  <filter id="police">
+  	<use xlink:href="filtres.svg#filter"></use>
+  </filter>
+	<filter id=filtre>
+		<feGaussianBlur stdDeviation=5>			
+			<animate
+				attributeName="stdDeviation"
+				from=5 to=0
+				dur=1s
+				fill=freeze
+			></animate>	
+		</feGaussianBlur>
+	</filter>
+</defs>
+</svg>
+<style>
+	p{
+		filter: url(#police) url(#filtre);
+	}
+</style>
+</body>
+</html>
