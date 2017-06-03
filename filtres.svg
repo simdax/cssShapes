@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="filter" xmlns="//w3.org/2000/svg" >
+<svg xmlns="//w3.org/2000/svg" >
   <defs>
- <filter>
+ <filter id="policeChelou">
           <!-- COLORS -->
             <feFlood flood-color="#663300" result="COLOR-red" />‚
             <feFlood flood-color="#D7A500" result="COLOR-y" />
@@ -43,5 +43,21 @@
               <feMergeNode in="THIN-BEVEL_30" />
             </feMerge>
           </filter>
+
+<filter id="shadowBox">
+  <feGaussianBlur stdDeviation="1" result='out1'></feGaussianBlur in='out1' result='out2'>
+  <feOffset dx='5' dy='5' in='out2' result='out3'></feOffset>
+  <feComposite operator='over' in='SourceGraphic' in2='out3' ></feComposite>
+</filter>
+  <filter id=filtreBlur>
+    <feGaussianBlur stdDeviation=5>     
+      <animate
+        attributeName="stdDeviation"
+        from=5 to=0
+        dur=1s
+        fill=freeze
+      ></animate> 
+    </feGaussianBlur>
+</filter>
         </defs>
 </svg>
