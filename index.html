@@ -3,95 +3,77 @@
 <head>
 	<meta charset="UTF-8">
 	<title>coucou</title>
-
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
 
-	<p>
-   Salut les copains. C'est chouette ce truc
-</p>
-
-<p>C'est assez étonnant</p>
-<p>truc de fou</p>
-
-<div id="maGueule" class="oim">
+<header></header>
+<main>	
+<div class="io" tabindex=-1 onfocus="console.log('ia')">
+	
+	<div id="maGueule" class="oim">
+	</div>
+	<div id="text" >
+	 	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem aspernatur, distinctio perspiciatis ipsam, obcaecati quam dolores non consectetur libero corporis error earum modi autem velit numquam possimus amet dignissimos repellat!
+	</div>
+</div>
+</main>
+<footer></footer>
+<!-- <div id="taGueule" class="oim">
  	<div id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem aspernatur, distinctio perspiciatis ipsam, obcaecati quam dolores non consectetur libero corporis error earum modi autem velit numquam possimus amet dignissimos repellat!</div>
 </div>
-<div id="taGueule" class="oim">
- 	<div id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem aspernatur, distinctio perspiciatis ipsam, obcaecati quam dolores non consectetur libero corporis error earum modi autem velit numquam possimus amet dignissimos repellat!</div>
-</div>
-
+ -->
 <style>
 	
-	p{
-		color: red;
-		filter: hue-rotate(270deg);
-	}
-	p:hover{
-		filter: hue-rotate(90deg);
-
-	}
 	.oim{
-		width: 200px;
+		/*width: 200px;*/
 		height: 200px;
-		filter: url(#filtre);
-		background: url("https://s-media-cache-ak0.pinimg.com/avatars/scornaz_1413380580_280.jpg");
-		transition-duration : 1s; 
-	  clip-path: polygon(80% 10%, 50% 100%, 10% 10%);
+		filter: url(#filtre) grey-scale(100);
+		background: #ddd url("https://s-media-cache-ak0.pinimg.com/avatars/scornaz_1413380580_280.jpg") center/10% no-repeat;
+		transition-duration : 0.2s;
+	  -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
 	}
-	.oim:hover{
-		filter: contrast(50%);
-		transform: scale(1.5) translate(-50px, 50px);
-		background-position: 200px; 
-		width: 800px;
+	.io:active, .io:focus{
+		outline: none;
+	}
+	.io.active .oim{
+	  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+		background-size: 30%;
+		background-position: 80%;
+		/*width: 800px;*/
 		height: 300px;
-	  clip-path: polygon(100% 10%, 50% 100%, 10% 10%);
 	}
 	#text{
-		display: none;
-	}
-	.oim:hover #text{
-		display: block;
 		position: relative;
-		color: black;
-		top: 50px;
-		overflow: visible;
-		padding: 250px;
+		bottom: 100px;
+		background:  red;
+		opacity: 0;
+		transition-duration: 0.2s;
+	}
+	.io.active #text{
+		opacity: 1;
+		shape-outside: polygon();
 	}
 </style>
 
-<svg height=0>
-<defs>
-	<filter id=filtre>
-		<feGaussianBlur stdDeviation=5>			
-			<animate
-				attributeName="stdDeviation"
-				from=5 to=0
-				dur=1s
-				fill=freeze
-			></animate>	
-		</feGaussianBlur>
-	</filter>
-</defs>
-</svg>
-
 <script src="//unpkg.com/jquery"></script>
-
+<script>
+	$('.io').on('click',function () {
+		$('.io').toggleClass('active')
+	})
+</script>
 <script >
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function () {
 			if (xhr.responseText.length > 0) {
-			console.log(xhr.responseText);
-				
+				hydrateDOM();
 			}
 		};
-		xhr.open(
-			"get","content.json"
-		);
+		xhr.open("get","content.json");
 		xhr.send();		
 	function hydrateDOM() {
 
-		}
+	}
 </script>	
 
 </body>
